@@ -1,0 +1,36 @@
+<div class="row">
+  <div class="col-8 m-auto">
+    <form #form="ngForm">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" ngModel class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="pass">Password</label>
+        <input type="password" id="pass" name="pass" ngModel class="form-control" required>
+      </div>
+      <div class="form-group">
+        <label for="fName">First Name</label>
+        <input type="text" id="fName" name="fName" ngModel class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="sName">Second Name</label>
+        <input type="text" id="sName" name="sName" ngModel class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="age">Age</label>
+        <input type="number" min="15" max="35" id="age" name="age" ngModel class="form-control">
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender</label>
+        <select name="gender" id="gender" ngModel class="form-control">
+          <option value="" disabled>Select gender</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+      </div>
+      <button class="btn btn-danger ml-2" [disabled]="!form.valid" (click)="onSignUp(form)">Sign Up</button>
+
+    </form>
+  </div>
+</div>

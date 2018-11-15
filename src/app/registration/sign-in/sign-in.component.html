@@ -1,0 +1,17 @@
+<div class="container">
+  <form #form="ngForm">
+    <div class="form-group">
+      <label for="email">Email address</label>
+      <input #email type="email" id="email" name="email" ngModel class="form-control" aria-describedby="emailHelp" placeholder="Enter email" required>
+    </div>
+    <div class="form-group">
+      <label for="pass">Password</label>
+      <input type="password" id="pass" name="pass" ngModel class="form-control" placeholder="Password" required>
+    </div>
+    <div class="form-group d-flex justify-content-around"> 
+      <button type="submit" class="btn btn-success" [disabled]="!form.valid" (click)="onSignIn(form)">Sign In</button>
+      <a (click)="onForgotPass()" style="cursor:pointer; text-align: center">Forgot password?</a>
+      <button type="submit" class="btn btn-danger" (click)="openSignUp()">Register</button>
+    </div>
+  </form>
+</div>

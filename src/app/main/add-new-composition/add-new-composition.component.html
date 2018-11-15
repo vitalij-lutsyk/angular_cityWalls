@@ -1,0 +1,60 @@
+<h1 class="text-center">Додайте новий твір</h1>
+<form [formGroup]="userForm">
+  <div class="form-group">
+    <label for="name">Назва композиції</label>
+    <input type="text" id="name" class="form-control" placeholder="Введіть назву" formControlName="name">
+  </div>
+
+  <div class="form-group">
+    <label for="imageFile" class="form-control btn btn-outline-success"  id="imageUploadGroup">
+        <input type="file" id="imageFile" name="imageFile" (change)="resizeImage()" style="opacity: 0;">
+        <p class="requiredField">Додайте зображення</p> 
+      </label>    
+    <img src="" id="userFile" class="rounded mx-auto d-block mt-2 mb-2" name="userFile">
+  </div>
+
+  <div class="form-group">
+    <label for="author">Автор твору</label>
+    <input type="text" id="author" class="form-control" formControlName="author">
+  </div>
+
+  <div class="form-group">
+    <label for="type" class="requiredField">Тип твору</label>
+    <select id="type" class="form-control" formControlName="type">
+      <option value="notValid" disabled>Виберіть зі списку</option>
+      <option *ngFor="let type of types" [value]="type">{{type}}</option>
+    </select>
+  </div>
+  
+  <div class="form-group">
+    <label for="locationType" class="requiredField">Тип розташування графіті</label>
+    <select id="locationType" class="form-control" name="locationType" formControlName="locationType">
+      <option value="notValid" disabled>Виберіть зі списку</option>
+      <option *ngFor="let loc of locationTypes" [value]="loc">{{loc}}</option>
+    </select>
+  </div>
+  <div class="form-group container  ml-0 mr-0" formGroupName="address">
+    <label for="country">Адреса</label>
+    <div class="row">
+      <select type="text" id="country" class="form-control col-sm-3 mr-2" formControlName="country">
+        <option value="Ukraine">Україна</option>
+      </select>
+      <input type="text" id="city" class="form-control col-sm-3 mr-2" formControlName="city" placeholder="місто">
+      <input type="text" id="street" class="form-control col-sm-3 mr-2" formControlName="street" placeholder="вулиця">
+      <input type="text" id="house" class="form-control col-sm-1 mr-2" formControlName="house" placeholder="№">
+    </div>
+  </div>
+
+  <div class="form-group">
+      <label for="description">Опис</label>
+      <textarea type="text" id="description" class="form-control" formControlName="description"></textarea>
+    </div>
+
+  <div class="form-group">
+    <label for="mapAdd" ><p>Введіть розташування</p><p class="requiredField">(перетягніть маркер у потрібне місце)</p></label>
+    <div id="mapAdd" name="objectCoordinates"></div>
+  </div>
+
+  <hr>
+  <button id="submitSent" [disabled]="!userForm.valid||!exportCoord||!userImage" class="btn btn-success mt-4" (click)="onSubmit()">Додати твір</button>
+</form>

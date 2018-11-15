@@ -1,0 +1,9 @@
+<div id="home">
+  <div id="mainText" class="text-center">
+    <h1 routerLink="/main">City <span style="color: rgb(0, 204, 255)">Walls</span> </h1>
+    <h3>Портал StreetArt Творів</h3>
+    <p>Велика колекція графіті твого міста в одному місці, у зручному форматі</p>
+  </div>
+  <div class="background" [ngStyle]="{'background-image': 'url(../../assets/homeBack/' + backImage + '.jpg)'}"></div>
+  <div id="start" routerLink="/main"><img src="../../assets/next.svg" alt="start"></div>
+</div>
