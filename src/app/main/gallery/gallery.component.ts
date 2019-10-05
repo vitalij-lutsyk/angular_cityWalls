@@ -15,7 +15,7 @@ import { SharedService } from '../../services/shared.service';
 })
 export class GalleryComponent implements OnInit {
   active: string;
-  @ViewChild('myCarousel')
+  @ViewChild('myCarousel', { static: true })
   myCarousel: NgbCarousel;
   constructor(
     public db: DbService,

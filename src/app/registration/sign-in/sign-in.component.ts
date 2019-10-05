@@ -12,7 +12,7 @@ import { SignUpComponent } from '../sign-up/sign-up.component';
   styleUrls: ['./sign-in.component.css']
 })
 export class SignInComponent implements OnInit {
-  @ViewChild('email')
+  @ViewChild('email', { static: true })
   email: ElementRef;
 
   constructor(
