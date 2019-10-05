@@ -1,19 +1,15 @@
 import { Component, OnInit, OnDestroy, AfterContentInit } from '@angular/core';
 import * as L from 'leaflet';
 import * as firebase from 'firebase';
-import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { Subscription } from 'rxjs';
 
-import { AuthService } from '../services/auth.service';
-import { DbService } from '../services/db.service';
-import { UserObj } from '../services/userObj';
-import { SharedService } from '../services/shared.service';
+import { AuthService } from '../../services/auth.service';
+import { DbService } from '../../services/db.service';
+import { UserObj } from '../../services/userObj';
+import { SharedService } from '../../services/shared.service';
 
-import { GalleryComponent } from './gallery/gallery.component';
-import { AddNewCompositionComponent } from './add-new-composition/add-new-composition.component';
-import { SignInComponent } from '../registration/sign-in/sign-in.component';
-import { SignUpComponent } from '../registration/sign-up/sign-up.component';
-import { MapComponent } from './map/map.component';
+import { GalleryComponent } from '../../components/gallery/gallery.component';
 
 @Component({
   selector: 'app-main',
@@ -49,33 +45,6 @@ export class MainComponent implements OnInit, AfterContentInit, OnDestroy {
     features: []
   };
 
-  ngOnInit() {
-    this.db.fetchData();
-    this.subscription = this.db.newObject.subscribe((objects: UserObj[]) => {
-      this.objects = objects;
-      for (const key of objects) {
-        const mapObj = {
-          type: 'Feature',
-          properties: key.properties,
-          geometry: {
-            type: 'Point',
-            coordinates: [
-              key.geometry.coordinates[1],
-              key.geometry.coordinates[0]
-            ]
-          }
-        };
-        this.geojson.features.push(mapObj);
-      }
-    });
-    this.createMap();
-    if (window.screen.width < 500) {
-      this.mobile = true;
-    }
-  }
-  ngAfterContentInit() {
-    this.objects = this.db.objects;
-  }
   // creating map
   createMap() {
     this.map = L.map('map').setView([49.84, 24.03], 13);
@@ -237,11 +206,6 @@ export class MainComponent implements OnInit, AfterContentInit, OnDestroy {
       });
   }
 
-  // function, that log off users
-  LogOut() {
-    this.auth.logOut();
-  }
-
   // function, that open modal with carousel with more detail description of composition
   // as argument acceptind serial number of composition, that user has clicked
   openGallery(i) {
@@ -253,34 +217,33 @@ export class MainComponent implements OnInit, AfterContentInit, OnDestroy {
     });
   }
 
-  // function, that open modal with AddNewComposition component
-  openAddNew() {
-    const modalRef = this.modalService.open(AddNewCompositionComponent, {
-      size: 'lg'
+  ngOnInit() {
+    this.db.fetchData();
+    this.subscription = this.db.newObject.subscribe((objects: UserObj[]) => {
+      this.objects = objects;
+      for (const key of objects) {
+        const mapObj = {
+          type: 'Feature',
+          properties: key.properties,
+          geometry: {
+            type: 'Point',
+            coordinates: [
+              key.geometry.coordinates[1],
+              key.geometry.coordinates[0]
+            ]
+          }
+        };
+        this.geojson.features.push(mapObj);
+      }
     });
+    this.createMap();
+    if (window.screen.width < 500) {
+      this.mobile = true;
+    }
   }
-
-  // function, that open modal with SignIn component
-  openSignIn() {
-    const modalRef = this.modalService.open(SignInComponent, {
-      centered: true,
-      size: 'sm'
-    });
+  ngAfterContentInit() {
+    this.objects = this.db.objects;
   }
-
-  // function, that open modal with SignUp component
-  openSignUp() {
-    const modalRef = this.modalService.open(SignUpComponent);
-  }
-
-  // function, that open modal with Map component
-  openFullMap() {
-    const modalRef = this.modalService.open(MapComponent, {
-      centered: true,
-      size: 'lg'
-    });
-  }
-
   // after destroy Main component - unsubscribe from receiving data from firebase
   ngOnDestroy() {
     this.subscription.unsubscribe();

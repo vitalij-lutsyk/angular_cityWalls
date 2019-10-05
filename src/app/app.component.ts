@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as firebase from 'firebase';
+import { environment } from 'src/environments/environment';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -10,14 +11,7 @@ export class AppComponent implements OnInit {
   title = 'app';
   constructor() {}
   ngOnInit() {
-    const config = {
-      apiKey: 'AIzaSyAf2IW0XdvJ6case5VqidJwOIOiWwOWNTc',
-      authDomain: 'citywalls-b90e3.firebaseapp.com',
-      databaseURL: 'https://citywalls-b90e3.firebaseio.com',
-      projectId: 'citywalls-b90e3',
-      storageBucket: 'citywalls-b90e3.appspot.com',
-      messagingSenderId: '693647528029'
-    };
+    const config = environment.firebaseConfig;
     firebase.initializeApp(config);
   }
 }

@@ -1,0 +1,42 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px;
+  background-color: rgba(255, 255, 0, 0.9);
+}
+#openAddNew:disabled:hover::after{
+  content: "Залогуйтеся, щоб додавати графіті!";
+  position: absolute;
+  left: 20px;
+  top: 30px;
+  font-size: 10px;
+  color: blue;
+  background-color: rgba(255, 255, 0, 0.85);
+}
+#openFullMap:disabled:hover::after{
+  content: "Карта в розробці!";
+  position: absolute;
+  left: 20px;
+  top: 30px;
+  font-size: 10px;
+  color: blue;
+  background-color: rgba(255, 255, 0, 0.85);
+}
+
+.controls button{
+  margin: 5px;
+  background: none;
+  border: none;
+  outline: none;
+  font-size: 20px;
+  position: relative;
+  cursor: pointer;
+}
+.logo{
+  cursor: pointer;
+  font-family: BEYNO;
+  font-weight:bolder;
+  font-size: 30px;
+  line-height: 30px;
+}

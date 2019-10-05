@@ -1,8 +1,18 @@
 @font-face {
-    font-family: BEYNO;
-    src: url(../assets/fonts/BEYNO.otf); 
+	font-family: BEYNO;
+	src: url(../assets/fonts/BEYNO.otf);
 }
+
 @font-face {
-    font-family: Lato;
-    src: url(../assets/fonts/Lato-Regular.ttf); 
+	font-family: Lato;
+	src: url(../assets/fonts/Lato-Regular.ttf);
+}
+
+app-header {
+	height: 60px;
+	width: 100%;
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 1001;
 }

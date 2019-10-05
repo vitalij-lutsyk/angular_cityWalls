@@ -1,0 +1,33 @@
+<header>
+  <div class="controls text-center">
+    <button routerLink="/"><i class="fas fa-arrow-left"></i></button>
+    <button [disabled]="!auth.token" (click)="openAddNew()" id="openAddNew">
+      <i class="fas fa-plus"></i>
+    </button>
+    <button id="openFullMap" (click)="openFullMap()"><i class="fas fa-map-marked-alt"></i></button>
+  </div>
+  <div *ngIf="!auth.token || !mobile" class="logo" routerLink="">
+    City <span style="color: rgb(0, 204, 255)">Walls</span>
+  </div>
+  <div class="row">
+    <div class="col logButton">
+      <div class="btn-group mr-3">
+        <button type="button" class="btn btn-outline-success logEmail"
+            *ngIf="auth.token">{{auth.userEmail}}</button>
+        <div class="btn-group" ngbDropdown placement="bottom-right" role="group"
+          aria-label="Button group with nested dropdown">
+          <button class="btn btn-outline-primary" ngbDropdownToggle><i
+                  class="fas fa-sign-in-alt"></i></button>
+          <div class="dropdown-menu" ngbDropdownMenu>
+            <input *ngIf="!auth.token" class="dropdown-item" type="button" name="" id="signIn"
+                value="Sign In" (click)="openSignIn()">
+            <input *ngIf="!auth.token" class="dropdown-item" type="button" name="" id="signUp"
+                value="Sign Up" (click)="openSignUp()">
+            <input *ngIf="auth.token" class="dropdown-item" type="button" name="" id="LogOff"
+                value="Log Off" routerLink="" (click)="LogOut()">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>

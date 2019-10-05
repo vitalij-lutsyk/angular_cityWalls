@@ -7,18 +7,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouterModule } from '@angular/router';
 
 import { AppComponent } from './app.component';
-import { HomeComponent } from './home/home.component';
-import { MainComponent } from './main/main.component';
-import { MapComponent } from './main/map/map.component';
-import { GalleryComponent } from './main/gallery/gallery.component';
-// import { AuthorsComponent } from './authors/authors.component';
-// import { AuthorComponent } from './author/author.component';
-import { AddNewCompositionComponent } from './main/add-new-composition/add-new-composition.component';
-import { SignInComponent } from './registration/sign-in/sign-in.component';
-import { SignUpComponent } from './registration/sign-up/sign-up.component';
-import { DbService } from './services/db.service';
+import { HomeComponent } from './pages/home/home.component';
+import { MainComponent } from './pages/main/main.component';
+import { MapComponent } from './components/map/map.component';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
-// import { MapDataService } from './services/map-data.service';
+import { AddNewCompositionComponent } from './components/add-new-composition/add-new-composition.component';
+import { SignInComponent } from './pages/sign-in/sign-in.component';
+import { SignUpComponent } from './pages/sign-up/sign-up.component';
+import { DbService } from './services/db.service';
+import { HeaderComponent } from './components/header/header.component';
 
 const routes = [
   { path: '', component: HomeComponent },
@@ -27,8 +25,6 @@ const routes = [
   { path: 'main', component: MainComponent },
   { path: 'map', component: MapComponent },
   { path: 'gallery', component: GalleryComponent },
-  // { path: 'authors', component: AuthorsComponent },
-  // { path: 'author', component: AuthorComponent },
   { path: 'addNew', component: AddNewCompositionComponent }
 ];
 
@@ -37,13 +33,12 @@ const routes = [
     AppComponent,
     HomeComponent,
     MainComponent,
-    // AuthorsComponent,
-    // AuthorComponent,
     MapComponent,
     GalleryComponent,
     AddNewCompositionComponent,
     SignInComponent,
-    SignUpComponent
+    SignUpComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
