@@ -1,0 +1,16 @@
+<div class="card" >
+  <img class="card-img-top cardMainImage" src="{{card.properties.imagePreview}}" (click)="openGallery(i)">
+  <div class="card-body">
+    <h6 class="card-title text-center cardMainTitle">{{card.properties.name}}</h6>
+    <div class="voter">
+      <button id="voteUp" (click)="voter(card.id, 'good')" class="mr-2" [disabled]="!auth.token">
+        <i class="fas fa-thumbs-up" [style.color]="getStyle(card.id, 'good')"></i>
+      </button>
+      <p>{{getVoterLength(card.id, 'good')}}</p>
+      <button id="voteDown" (click)="voter(card.id, 'bad')" class=" ml-2 mr-2" [disabled]="!auth.token">
+          <i class="fas fa-thumbs-down" [style.color]="getStyle(card.id, 'bad')"></i>
+      </button>
+      <p>{{getVoterLength(card.id, 'bad')}}</p>
+    </div>
+  </div>
+</div>

@@ -17,6 +17,7 @@ import { SignInComponent } from './pages/sign-in/sign-in.component';
 import { SignUpComponent } from './pages/sign-up/sign-up.component';
 import { DbService } from './services/db.service';
 import { HeaderComponent } from './components/header/header.component';
+import { CardComponent } from './components/card/card.component';
 
 const routes = [
   { path: '', component: HomeComponent },
@@ -38,7 +39,8 @@ const routes = [
     AddNewCompositionComponent,
     SignInComponent,
     SignUpComponent,
-    HeaderComponent
+    HeaderComponent,
+    CardComponent
   ],
   imports: [
     BrowserModule,
