@@ -48,7 +48,7 @@ const routes = [
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgbModule.forRoot(),
+    NgbModule,
     RouterModule.forRoot(routes)
   ],
   providers: [DbService],
